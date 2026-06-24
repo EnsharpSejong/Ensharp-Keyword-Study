@@ -8,8 +8,8 @@
 
 ### 이미 진행 중인 참고 스터디:
 
-- **레포지토리 바로가기**: https://github.com/woowacourse-BE8-13F-study/level-interview
-- **디스커션 바로가기:**  https://github.com/woowacourse-BE8-13F-study/level-interview/discussions
+- [레포지토리 바로가기](https://github.com/woowacourse-BE8-13F-study/level-interview)
+- [디스커션 바로가기](https://github.com/woowacourse-BE8-13F-study/level-interview/discussions)
 
 ## 목적
 
