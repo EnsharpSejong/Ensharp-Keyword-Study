@@ -1,0 +1,17 @@
+{
+  "teams": {
+    "A": ["구가영", "송우민", "황재무"],
+    "B": ["김민오", "이예은", "이은지"]
+  },
+  "github_logins": {
+    "구가영": "9ga0",
+    "송우민": "dnnals",
+    "황재무": "JM-220",
+    "김민오": "k9425mino",
+    "이예은": "paiwhy",
+    "이은지": "eunji719"
+  },
+  "first_week_monday": "2026-09-07",
+  "first_team": "A",
+  "fine_per_topic": 3000
+}
