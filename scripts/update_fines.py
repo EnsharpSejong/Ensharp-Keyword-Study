@@ -39,13 +39,12 @@ def graphql(query, variables):
     return payload["data"]
 
 
-def load_discussions(start, end):
+def load_discussions():
     owner, name = os.environ["GITHUB_REPOSITORY"].split("/", 1)
     query = """
-    query($owner:String!, $name:String!, $start:DateTime!, $end:DateTime!) {
+    query($owner:String!, $name:String!) {
       repository(owner:$owner, name:$name) {
-        discussions(first:100, orderBy:{field:CREATED_AT, direction:ASC},
-          filterBy:{createdAt:{from:$start, to:$end}}) {
+        discussions(first:100, orderBy:{field:CREATED_AT, direction:ASC}) {
           nodes { id createdAt author { login }
             comments(first:100) { nodes { author { login } createdAt } }
           }
@@ -53,8 +52,7 @@ def load_discussions(start, end):
       }
     }
     """
-    result = graphql(query, {"owner": owner, "name": name,
-        "start": f"{start}T00:00:00+09:00", "end": f"{end}T23:59:59+09:00"})
+    result = graphql(query, {"owner": owner, "name": name})
     return result["repository"]["discussions"]["nodes"]
 
 
@@ -86,7 +84,8 @@ def main():
         return
 
     login_to_name = {v: k for k, v in CONFIG["github_logins"].items() if v != "CHANGE_ME"}
-    all_discussions = load_discussions(first_week, week_end)
+    all_discussions = [d for d in load_discussions()
+                       if first_week.isoformat() <= d["createdAt"][:10] <= week_end.isoformat()]
     team = team_for(week_start)
     presenters = set(CONFIG["teams"][team])
     topic_ids = {d["id"] for d in all_discussions if in_week(d["createdAt"], week_start, week_end)
