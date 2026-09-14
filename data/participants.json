@@ -13,5 +13,8 @@
   },
   "first_week_monday": "2026-09-07",
   "first_team": "A",
-  "fine_per_topic": 3000
+  "fine_per_topic": 3000,
+  "topic_numbers_by_week": {
+    "2026-09-07": [34, 35, 36]
+  }
 }

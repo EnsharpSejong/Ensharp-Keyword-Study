@@ -45,7 +45,7 @@ def load_discussions():
     query($owner:String!, $name:String!) {
       repository(owner:$owner, name:$name) {
         discussions(first:100, orderBy:{field:CREATED_AT, direction:ASC}) {
-          nodes { id createdAt author { login }
+          nodes { id number createdAt author { login }
             comments(first:100) { nodes { author { login } createdAt } }
           }
         }
@@ -88,8 +88,12 @@ def main():
                        if first_week.isoformat() <= d["createdAt"][:10] <= week_end.isoformat()]
     team = team_for(week_start)
     presenters = set(CONFIG["teams"][team])
-    topic_ids = {d["id"] for d in all_discussions if in_week(d["createdAt"], week_start, week_end)
-                 and login_to_name.get((d.get("author") or {}).get("login")) in presenters}
+    configured_numbers = CONFIG.get("topic_numbers_by_week", {}).get(str(week_start))
+    if configured_numbers:
+        topic_ids = {d["id"] for d in all_discussions if d["number"] in configured_numbers}
+    else:
+        topic_ids = {d["id"] for d in all_discussions if in_week(d["createdAt"], week_start, week_end)
+                     and login_to_name.get((d.get("author") or {}).get("login")) in presenters}
 
     previous = {(m["person"], m["topic"]): m for m in state.get("open_misses", [])}
     open_misses = []
