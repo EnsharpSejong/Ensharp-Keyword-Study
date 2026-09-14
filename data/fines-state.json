@@ -1,12 +1,33 @@
 {
-  "last_evaluated_week": null,
+  "last_evaluated_week": "2026-09-14",
   "cumulative_fines": {
     "구가영": 0,
-    "송우민": 0,
-    "황재무": 0,
+    "송우민": 9000,
+    "황재무": 3000,
     "김민오": 0,
     "이예은": 0,
-    "이은지": 0
+    "이은지": 3000
   },
-  "open_misses": []
+  "open_misses": [
+    {
+      "person": "송우민",
+      "topic": "D_kwDOTDzwDc4ApEhH"
+    },
+    {
+      "person": "송우민",
+      "topic": "D_kwDOTDzwDc4ApEkg"
+    },
+    {
+      "person": "송우민",
+      "topic": "D_kwDOTDzwDc4ApE8r"
+    },
+    {
+      "person": "황재무",
+      "topic": "D_kwDOTDzwDc4ApE8r"
+    },
+    {
+      "person": "이은지",
+      "topic": "D_kwDOTDzwDc4ApE8r"
+    }
+  ]
 }
