@@ -100,7 +100,7 @@ def main():
         comments = discussion["comments"]["nodes"]
         if topic_id in topic_ids:
             for name, login in CONFIG["github_logins"].items():
-                if name in presenters or login == "CHANGE_ME":
+                if login == "CHANGE_ME":
                     continue
                 key = (name, topic_id)
                 wrote_this_week = any((c.get("author") or {}).get("login") == login and

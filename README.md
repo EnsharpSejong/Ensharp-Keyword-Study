@@ -55,7 +55,7 @@
 
 GitHub Actions의 `주간 벌금 점검` 워크플로가 매주 일요일에서 월요일로 넘어가는 자정(KST)에 실행됩니다. GitHub Actions의 스케줄은 UTC 기준이므로 `일요일 15:00 UTC`로 설정되어 있습니다.
 
-워크플로는 **2026년 9월 7일 이후에 개설된 GitHub Discussions**만 점검 대상으로 삼습니다. 해당 주의 발제와 코멘트를 확인하고, `data/fines-state.json`에 누적 상태를 저장한 뒤 README의 현황 표를 갱신합니다. 2026년 9월 7일 주간은 A팀부터 시작하며 이후 매주 A/B팀이 교대합니다. 저장소 설정에서 Actions가 `Read and write permissions`를 사용하도록 허용해야 README 커밋이 가능합니다.
+워크플로는 **2026년 9월 7일 이후에 개설된 GitHub Discussions**만 점검 대상으로 삼습니다. 해당 주의 발제와 코멘트를 확인하며, 발제자를 포함한 6명의 참여자 모두가 코멘트를 작성했는지를 기준으로 계산합니다. `data/fines-state.json`에 누적 상태를 저장한 뒤 README의 현황 표를 갱신합니다. 2026년 9월 7일 주간은 A팀부터 시작하며 이후 매주 A/B팀이 교대합니다. 저장소 설정에서 Actions가 `Read and write permissions`를 사용하도록 허용해야 README 커밋이 가능합니다.
 
 참여자의 GitHub 로그인 아이디는 [`data/participants.json`](data/participants.json)에 등록해야 합니다. 이름만으로는 GitHub API의 작성자를 안정적으로 식별할 수 없기 때문입니다.
 
